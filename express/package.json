@@ -8,7 +8,7 @@
     "start": "nodemon app.js",
     "start-server": "node app.js"
   },
-  "author": "",
+  "author": "Chris Nguyen",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
