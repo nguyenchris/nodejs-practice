@@ -6,6 +6,14 @@ const bodyParser = require('body-parser');
 const expressHbs = require('express-handlebars');
 
 const errorController = require('./controllers/error');
+const db = require('./util/database');
+
+db.execute('SELECT * FROM products')
+.then(result => {
+})
+.catch(err => {
+    console.log(err);
+})
 
 app.engine('hbs', expressHbs({layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs'}));
 app.set('view engine', 'hbs');
