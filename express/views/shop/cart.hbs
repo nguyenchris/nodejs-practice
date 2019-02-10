@@ -1,17 +1,23 @@
 <main>
     {{#if hasProducts}}
-        <ul>
-            {{#each products}}
-            
-                <li>
-                    <p>{{this.productData.title}} ({{this.qty}})</p>
-                    <form action="/cart-delete-item" method="POST">
-                        <input type="hidden" value="{{this.productData.id}}" name="productId">
-                        <button class="btn" type="submit">Delete</button>
-                    </form>
-                </li>
-            {{/each}}
-        </ul>
+    <ul>
+        {{#each products}}
+
+        <li>
+            <p>{{this.title}} ({{this.cartItem.quantity}})</p>
+            <form action="/cart-delete-item" method="POST">
+                <input type="hidden" value="{{this.id}}" name="productId">
+                <button class="btn" type="submit">Delete</button>
+            </form>
+        </li>
+        {{/each}}
+    </ul>
+    <hr>
+    <div class="centered">
+        <form action="/create-order" method="POST">
+            <button type="submit" class="btn">Order Now!</button>
+        </form>
+    </div>
     {{else}}
     <h1>No Products in Cart!</h1>
     {{/if}}
