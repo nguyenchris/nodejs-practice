@@ -5,8 +5,8 @@
         <li>
             <h1>Order# - {{_id}}</h1>
             <ul>
-                {{#each items}}
-                <li>{{title}} ({{quantity}})</li>
+                {{#each products}}
+                <li>{{product.title}} ({{quantity}})</li>
                 {{/each}}
             </ul>
         </li>
