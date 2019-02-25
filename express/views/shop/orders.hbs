@@ -3,10 +3,10 @@
     {{#each orders}}
     <ul>
         <li>
-            <h1># {{id}}</h1>
+            <h1>Order# - {{_id}}</h1>
             <ul>
-                {{#each products}}
-                <li>{{title}} ({{orderItem.quantity}})</li>
+                {{#each items}}
+                <li>{{title}} ({{quantity}})</li>
                 {{/each}}
             </ul>
         </li>
