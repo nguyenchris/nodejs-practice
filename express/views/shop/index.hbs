@@ -14,8 +14,9 @@
                 <p class="product__description">{{this.description}}</p>
             </div>
             <div class="card__actions">
-                {{#if isAuthenticated}}
+                {{#if ../isAuthenticated}}
                 <form action="/cart" method="POST">
+                    <input type="hidden" name="_csrf" value="{{../csrfToken}}">
                     <button class="btn" type="submit">Add to Cart</button>
                     <input type="hidden" name="productId" value="{{this._id}}">
                 </form>

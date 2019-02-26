@@ -7,8 +7,7 @@ exports.getAddProduct = (req, res, next) => {
         productCSS: true,
         activeAddProduct: true,
         formsCSS: true,
-        editing: false,
-        isAuthenticated: req.session.isLoggedIn
+        editing: false
     });
 };
 
@@ -22,8 +21,7 @@ exports.postAddProduct = (req, res, next) => {
         price: price,
         description: description,
         imageUrl: imageUrl,
-        userId: req.user,
-        isAuthenticated: req.session.isLoggedIn
+        userId: req.user
     });
     product
         .save()
@@ -32,20 +30,6 @@ exports.postAddProduct = (req, res, next) => {
             res.redirect('/admin/products');
         })
         .catch(err => console.log(err));
-    // req.user
-    //     .createProduct({
-    //         title: title,
-    //         price: price,
-    //         imageUrl: imageUrl,
-    //         description: description
-    //     })
-    //     .then(result => {
-    //         console.log('Created Product');
-    //         res.redirect('/admin/products')
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //     })
 };
 
 exports.getEditProduct = (req, res, next) => {
@@ -65,8 +49,7 @@ exports.getEditProduct = (req, res, next) => {
                 productCSS: true,
                 formsCSS: true,
                 editing: editMode,
-                product: product,
-                isAuthenticated: req.session.isLoggedIn
+                product: product
             });
         })
         .catch(err => {
@@ -80,7 +63,6 @@ exports.postEditProduct = (req, res, next) => {
     const updatedPrice = req.body.price;
     const updatedImageUrl = req.body.imageUrl;
     const updatedDescription = req.body.description;
-    // const product = new Product(updatedTitle, updatedPrice, updatedDescription, updatedImageUrl, prodId);
 
     Product.findById(prodId).then(product => {
             product.title = updatedTitle;
@@ -121,8 +103,7 @@ exports.getProducts = (req, res, next) => {
                 path: '/admin/products',
                 activeAdminProducts: true,
                 hasProducts: products.length > 0,
-                productCSS: true,
-                isAuthenticated: req.session.isLoggedIn
+                productCSS: true
             });
         })
         .catch(err => {
